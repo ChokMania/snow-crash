@@ -75,7 +75,7 @@ done
 Il suffit de lancer les deux en background et de regarder le deuxieme terminal qui ecoute le port 6969 en attendant les deux scripts s'execute de maniere assez proche pour que la **race-condition-vulnerability** soit exploitée :
 <pre><code>> sh /tmp/loop.sh &
 > sh /tmp/ln.sh &
-<code></pre>
+</code></pre>
 On obtient donc: 
 <pre><code>...
 .*( )*.
