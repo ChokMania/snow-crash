@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/47310929/does-python-support-character-type#:~:text=Python%20does%20not%20have%20a,are%20strings%20with%20length%20one.&text=There%20is%20no%20built%2Din,with%20str%20of%20length%201.
+https://stackoverflow.com/questions/27366479/python-3-os-walk-file-paths-unicodeencodeerror-utf-8-codec-cant-encode-s

