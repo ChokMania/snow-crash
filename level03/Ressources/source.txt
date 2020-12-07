@@ -1,0 +1,2 @@
+https://opensource.com/article/20/4/linux-binary-analysis
+https://stackoverflow.com/questions/8304396/what-is-vulnerable-about-this-c-code
