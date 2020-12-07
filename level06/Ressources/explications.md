@@ -1,5 +1,5 @@
 On trouve dans le dossier home un binaire nommé **level06** et un fichier php nommé **level06.php** contenant le code suivant :
-```
+```php
 #!/usr/bin/php
 <?php
 function y($m) {
