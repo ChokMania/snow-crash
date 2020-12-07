@@ -17,7 +17,11 @@ function x($y, $z) {
 $r = x($argv[1], $argv[2]);
 print $r;
 ?>
-</code></pre>
 ```
+> La partie interessante dans le code est <code>/(\[x (.*)\])/e</code> car le preg_replace utilise le modifier **/e** ou **(PREG_REPLACE_EVAL)**, qui est connu pour etre sensible aux injections (Il n'existe meme plus en PHP 7.0.0)
 
+On comprends que le format pour la string recupérée du <code>file_get_contents</code> doit etre formaté de la manière suivante:
+<code>"/(\[x (.*)\])/e" => [x (.*)]<c>
+
+L'injection permet de remplacer le
 

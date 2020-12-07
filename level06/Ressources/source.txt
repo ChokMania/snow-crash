@@ -1,0 +1,2 @@
+https://www.php.net/manual/fr/function.preg-replace.php
+https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php
