@@ -1,11 +1,11 @@
-On a acces au fichier /etc/passwd sur lequel on effectue un cat.
-On peut observer dans le fichier que l'user flag01 a son mot de passe en visble mais chiffré.
+On a accès au fichier **/etc/passwd** sur lequel on effectue un <code>cat</code>.
+On peut observer dans le fichier que l'user flag01 a son mot de passe en visible mais chiffré.
 
 <pre>
 flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
 </pre>
 
-On utilise donc l'outil de decryptage john the ripper avec les commandes suivantes :
+On utilise donc l'outil de decryptage **john the ripper** avec les commandes suivantes  :
 
 <pre>
 <code>> echo "flag01:42hDRfypTqqnw" > passwd</code>

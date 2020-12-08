@@ -1,4 +1,4 @@
-On cherche a savoir a quels fichiers nous avaons acces, donc on utilise la commande :
+On cherche à savoir à quels fichiers nous avons accès, donc on utilise la commande :
 
 <pre>
 <code>> find / -user flag00 -print 2>/dev/null</code>
@@ -10,8 +10,8 @@ Le contenu des deux fichiers est exactement le même:
 
 <code>cdiiddwpgswtgt</code>
 
-On cherche donc a dechiffrer ce dernier.
-On se rend compte qu'il s'agit dun **ROT**, plus precisemment un **ROT-15** qui nous donne :
+On cherche donc à déchiffrer ce dernier.
+On se rend compte qu'il s'agit d'un **ROT**, plus précisément un **ROT-15** qui nous donne :
 
 <code>nottoohardhere</code>
 
