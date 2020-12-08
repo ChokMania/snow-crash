@@ -1,3 +1,0 @@
-https://security.stackexchange.com/questions/42659/how-is-using-acces-opening-a-security-hole
-https://github.com/firmianay/Life-long-Learner/blob/master/SEED-labs/race-condition-vulnerability-lab.md
-https://vulncat.fortify.com/en/detail?id=desc.controlflow.cpp.file_access_race_condition

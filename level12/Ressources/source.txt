@@ -1,3 +1,0 @@
-https://unix.stackexchange.com/questions/86929/can-tr-work-with-regex
-http://perl.mines-albi.fr/DocFr/perlrequick.html
-https://regex101.com/

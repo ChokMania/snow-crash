@@ -37,7 +37,7 @@ Password:
 Erf nope..</code></pre>
 
 En regardant le programme de plus pres, on se rend compte qu'une injection est possible <code>io.popen("echo "..pass.." | sha1sum", "r")</code> car il execute la variable pass, qui est notre input.
-De plus la deuxieme partie du code ne sert a rien cart même un a message peut importe le mot de passe
+De plus la deuxieme partie du code ne sert a rien car même un a message peut importe le mot de passe
 > Le bon mot de passe est: **NotSoEasy** (rajouter un -n devant pour que cela fonctionne)
 
 On essaye :
