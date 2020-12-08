@@ -1,6 +1,6 @@
-On ne trouve dans le dossier home cette fois ci, et nous n'avons rien de plus que pour les autres levels. On comprend donc que l'on va devoir exploiter **getflag**.
+On ne trouve rine dans le dossier **home** cette fois ci, et nous n'avons rien de plus que pour les autres levels. On comprend donc que l'on va devoir exploiter **getflag**.
 
-On cherche a savoir ce que le binaire fait, pour cela on utilise ltrace:
+On cherche à savoir ce que le binaire fait, pour cela on utilise **ltrace**:
 <pre><code>> ltrace /bin/getflag
 __libc_start_main(0x8048946, 1, 0xbffff7e4, 0x8048ed0, 0x8048f40 <unfinished ...>
 ptrace(0, 0, 1, 0, 0)= -1
@@ -22,8 +22,8 @@ Dump of assembler code for function main:
 ...
 End of assembler dump.
 ```
-On trouve une ressemblance avec le level precedent mise a part que **ptrace** va bloquer nos tentaives de modification de value de getuid.
-Le but ici va etre de prendre l'uid de flag14 qui se trouve dans :
+On trouve une ressemblance avec le level précédent mis à part que **ptrace** va bloquer nos tentatives de modification de value de getuid.
+Le but ici va être de prendre l'uid de flag14 qui se trouve dans :
 <pre><code>> cat /etc/passwd | grep flag14
 flag14:x:3014:3014::/home/flag/flag14:/bin/bash
 
@@ -32,9 +32,8 @@ uid=3014(flag14) gid=3014(flag14) groups=3014(flag14),1001(flag)
 </code></pre>
 > Donc 3014
 
-On va donc creer un fichier .gdb contenant les instructions suivantes, avec des instructions pour bypass **ptrace** :
-<pre>file /home/user/level13/level13	# Prendre pour base le binaire level13
-file /bin/getflag	# Prendre pour base le binaire level13
+On va donc créer un fichier .gdb contenant les instructions suivantes, avec des instructions pour bypass **ptrace** :
+<pre>file /bin/getflag	# Prendre pour base le binaire getflag
 catch syscall ptrace 	# Creation d'un catch point pour ptrace
 commands 1
 set $eax=0		# Changement de valeur de son return

@@ -15,7 +15,7 @@ On se rend compte qu'il s'agit d'un **ROT**, plus précisément un **ROT-15** qu
 
 <code>nottoohardhere</code>
 
-On test le mot de passe :
+On teste le mot de passe :
 <pre>
 <code>> su flag00</code>
 <code>Password: nottoohardhere</code>

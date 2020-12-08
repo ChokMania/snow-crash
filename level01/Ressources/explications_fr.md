@@ -5,7 +5,7 @@ On peut observer dans le fichier que l'user flag01 a son mot de passe en visible
 flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
 </pre>
 
-On utilise donc l'outil de decryptage **john the ripper** avec les commandes suivantes  :
+On utilise donc l'outil de decryptage **john the ripper** avec les commandes suivantes sur un terminal externe :
 
 <pre>
 <code>> echo "flag01:42hDRfypTqqnw" > passwd</code>
@@ -18,7 +18,7 @@ Ce qui nous donne :
 
 <code>flag01:abcdefg</code>
 
-On test le mot de passe :
+On teste le mot de passe :
 <pre>
 <code>> su flag01</code>
 <code>Password: abcdefg</code>

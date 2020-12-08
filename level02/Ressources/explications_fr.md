@@ -1,14 +1,14 @@
 On trouve dans le dossier home un fichier **level02.pcap**
 
-On sait que ces fichiers contiennent le log d'un trafic reseau
+On sait que ces fichiers contiennent le log d'un trafic réseau
 
-On cherche a le recuperer pour pouvoir l'analyser, ainsi on utlise la commande suivante:
+On cherche à le récupérer pour pouvoir l'analyser, ainsi on utlise la commande suivante sur un terminal externe:
 
-<pre><code> sudo scp -P4242 -r level02@IP:/home/user/level02/level02.pcap </code></pre>
+<pre><code>> sudo scp -P4242 -r level02@IP:/home/user/level02/level02.pcap .</code></pre>
 
-On essaye de lire le conenu du fichier .pcap avec la commande :
+On essaie de lire le contenu du fichier .pcap avec la commande :
 
-<pre><code>tcpick -C -yU -r level02.pcap</code></pre>
+<pre><code>> tcpick -C -yU -r level02.pcap</code></pre>
 
 Qui nous donne (la partie intéressante):
 <pre>
@@ -57,14 +57,14 @@ L
 <00>
 </pre>
 
-> On sait que le 7f correspond au code ASCII DEL
+> On sait que le 7f correspond au code ASCII "DEL"
 
 Donc ft_wandr<7f><7f><7f>NDRel<7f>L0L donne donc:
 
 <code>ft_wa~~ndr~~NDRe~~l~~L0L -> ft_waNDReL0L</code>
 
 
-On test le mot de passe :
+On teste le mot de passe :
 <pre>
 <code>> su flag02</code>
 <code>Password: ft_waNDReL0L</code>
