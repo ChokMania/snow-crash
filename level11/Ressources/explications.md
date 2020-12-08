@@ -36,7 +36,7 @@ On abserve que le programme est lancé sur **127.0.0.1:5151**, donc pour pouvoir
 Password:
 Erf nope..</code></pre>
 
-En regardant le programme de plus pres, on se rend compte qu'une injection est possible <code>io.popen("echo "..pass.." | sha1sum", "r")</code> car il execute la varibale pass, qui est notre input.
+En regardant le programme de plus pres, on se rend compte qu'une injection est possible <code>io.popen("echo "..pass.." | sha1sum", "r")</code> car il execute la variable pass, qui est notre input.
 De plus la deuxieme partie du code ne sert a rien cart même un a message peut importe le mot de passe
 > Le bon mot de passe est: **NotSoEasy** (rajouter un -n devant pour que cela fonctionne)
 
