@@ -5,7 +5,7 @@ On trouve dans le dossier home un file token, dont nous ne pouvons lire le conte
 You may not access 'token'
 </code></pre>
 
-On fait un ltrace sur le binaire:
+On cherche a savoir ce que le binaire fait, pour cela on utilise ltrace:
 <pre><code>> ltrace ./level08 token
 __libc_start_main(0x8048554, 2, 0xbffff7d4, 0x80486b0, 0x8048720 <unfinished ...>
 strstr("token", "token")= "token"

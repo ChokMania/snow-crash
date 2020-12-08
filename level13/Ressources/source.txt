@@ -1,0 +1,5 @@
+https://www.opensourceforu.com/2011/08/modify-function-return-value-hack-part-1/
+https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf
+https://sourceware.org/gdb/onlinedocs/gdb/Set-Breaks.html
+https://reverseengineering.stackexchange.com/questions/2073/what-purpose-of-mov-esp-ebp
+https://reverseengineering.stackexchange.com/questions/15173/what-is-the-purpose-of-these-instructions-before-the-main-preamble
