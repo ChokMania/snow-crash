@@ -1,11 +1,11 @@
-On a accès au fichier **/etc/passwd** sur lequel on effectue un <code>cat</code>.
-On peut observer dans le fichier que l'user flag01 a son mot de passe en visible mais chiffré.
+We have access to the file **/etc/passwd** on which we make a <code>cat</code>
+We can see in the file that the user flag01 has his password visible but encrypted
 
 <pre>
 flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
 </pre>
 
-On utilise donc l'outil de decryptage **john the ripper** avec les commandes suivantes sur un terminal externe :
+So we use the decryption tool **john the ripper** with the following commands on an external terminal :
 
 <pre>
 <code>> echo "flag01:42hDRfypTqqnw" > passwd</code>
@@ -14,7 +14,7 @@ On utilise donc l'outil de decryptage **john the ripper** avec les commandes sui
 </pre>
 
 
-Ce qui nous donne :
+Which gives us :
 
 <code>flag01:abcdefg</code>
 

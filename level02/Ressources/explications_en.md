@@ -1,16 +1,16 @@
-On trouve dans le dossier home un fichier **level02.pcap**
+We find in the home folder a file **level02.pcap**
 
-On sait que ces fichiers contiennent le log d'un trafic réseau
+We know that these files contain the log of a network traffic
 
-On cherche à le récupérer pour pouvoir l'analyser, ainsi on utlise la commande suivante sur un terminal externe :
+We try to retrieve it to be able to analyze it, so we use the following command on an external terminal :
 
 <pre><code>> sudo scp -P4242 -r level02@IP:/home/user/level02/level02.pcap .</code></pre>
 
-On essaie de lire le contenu du fichier **.pcap** avec la commande :
+We try to read the contents of the **.pcap** file with the command :
 
 <pre><code>> tcpick -C -yU -r level02.pcap</code></pre>
 
-Qui nous donne (la partie intéressante) :
+Who gives us (the interesting part) :
 <pre>
 Linux 2.6.38-8-generic-pae (::ffff:10.1.1.2) (pts/10)
 
@@ -57,9 +57,9 @@ L
 <00>
 </pre>
 
-> On sait que le 7f correspond au code ASCII "DEL"
+> We know that 7f corresponds to the ASCII code "DEL"
 
-Donc ft_wandr<7f><7f><7f>NDRel<7f>L0L donne donc :
+So ft_wandr<7f><7f><7f>NDRel<7f>L0L gives :
 
 <code>ft_wa~~ndr~~NDRe~~l~~L0L -> ft_waNDReL0L</code>
 
