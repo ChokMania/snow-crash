@@ -3,15 +3,19 @@ On trouve dans le dossier **home** un binaire nommé **level06** et un fichier p
 #!/usr/bin/php
 <?php
 function y($m) {
-	$m = preg_replace("/\./", " x ", $m);
-	$m = preg_replace("/@/", " y", $m);
+	$m = preg_replace("/\./", " x ", $m);	# Remplace \. par " x"
+	$m = preg_replace("/@/", " y", $m);	# Remplace @ par " y"
 	return $m;
 }
 function x($y, $z) {
 	$a = file_get_contents($y);
 	$a = preg_replace("/(\[x (.*)\])/e", "y(\"\\2\")", $a);
+	# Le modificateur /e prend une chaîne de remplacement, et substitue le backslash suivi d'un nombre
+	# et exécute la chaîne résultante comme s'il s'agissait de code PHP
 	$a = preg_replace("/\[/", "(", $a);
+	# Remplace [ par (
 	$a = preg_replace("/\]/", ")", $a);
+	# Remplace ) par )
 	return $a;
 }
 $r = x($argv[1], $argv[2]);
