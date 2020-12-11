@@ -1,12 +1,12 @@
-On trouve dans le dossier **home** un fichier **token** et un binaire **./level13** qui, si on le lance nous affiche un message :
+We find in the **home** folder a **token** file and a **./level13** binary which, if we run it, displays a message :
 <pre><code>> ./level13
 UID 2013 started us but we we expect 4242
 </code></pre>
 
-On va donc chercher à changer l'uid, ou plutôt la valeur de l'uid dans le binaire.
-Pour cela nous allons utiliser GNU Debugeur (gdb)
+So we will try to change the uid, or rather the value of the uid in the binary.
+For this we will use GNU Debugger (gdb).
 
-On commence par analyser le binaire en lui même :
+We start by analyzing the binary itself :
 ```
 > gdb -q level13
 Reading symbols from /home/user/level13/level13...(no debugging symbols found)...done.
@@ -38,9 +38,9 @@ Dump of assembler code for function main:
 End of assembler dump.
 ```
 
-> On remarque que la commande getuid est faite, stocke son résultat dans **%eax** et fait une comparaison juste derrière avec **0x1092 (4242)** qui est la valeur l'on cherche.
+> We notice that the getuid command is done, stores its result in **%eax** and makes a comparison just behind with **0x1092 (4242)** which is the value we are looking for
 
-On va créer un fichier .gdb contenant les instructions suivantes :
+We are going to create a .gdb file containing the following instructions :
 <pre>file /home/user/level13/level13	# Prendre pour base le binaire level13
 break getuid			# Creer un breakpoint a get uid
 run				# Lance le debug
@@ -52,7 +52,7 @@ step				# Avance jusqu'a la fin du programme
 </pre>
 > <pre><code>printf "file /home/user/level13/level13\nbreak getuid\nrun\nstep\nprint \$eax\nset \$eax=4242\nprint \$eax\nstep\n" > /tmp/file.gdb</code></pre>
 
-Il ne reste plus qu'à le lancer :
+All that's left to do is to throw it :
 
 <pre><code>> gdb -x /tmp/file.gdb -q -batch
 Breakpoint 1 at 0x8048380

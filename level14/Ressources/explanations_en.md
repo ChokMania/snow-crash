@@ -1,15 +1,15 @@
-On ne trouve rine dans le dossier **home** cette fois ci, et nous n'avons rien de plus que pour les autres levels. On comprend donc que l'on va devoir exploiter **getflag**
+We find rine in the **home** folder this time, and we have nothing more than for the other levels. So we understand that we will have to exploit **getflag**
 
-On cherche à savoir ce que le binaire fait, pour cela on utilise **ltrace** :
+We want to know what the binary does, so we use **ltrace** :
 <pre><code>> ltrace /bin/getflag
 __libc_start_main(0x8048946, 1, 0xbffff7e4, 0x8048ed0, 0x8048f40 <unfinished ...>
 ptrace(0, 0, 1, 0, 0)= -1
 puts("You should not reverse this"You should not reverse this)= 28
 +++ exited (status 1) +++
 </code></pre>
-> **ptrace** fournit au processus parent un moyen de contrôler l'exécution d'un autre processus
+> **ptrace** provides the parent process with a way to control the execution of another process
 
-Et on analyse le binaire en lui même :
+And we analyze the binary itself :
 ```
 > gdb -q /bin/getflag
 Reading symbols from /bin/getflag...(no debugging symbols found)...done.
@@ -22,34 +22,34 @@ Dump of assembler code for function main:
 ...
 End of assembler dump.
 ```
-On trouve une ressemblance avec le level précédent mis à part que **ptrace** va bloquer nos tentatives de modification de value de **getuid**
-Le but ici va être de prendre l'uid de flag14 qui se trouve dans :
+We find a resemblance with the previous level except that **ptrace** will block our attempts to modify the value of **getuid**
+The goal here will be to take the uid of flag14 which is in :
 <pre><code>> cat /etc/passwd | grep flag14
 flag14:x:3014:3014::/home/flag/flag14:/bin/bash
 
 > id flag14
 uid=3014(flag14) gid=3014(flag14) groups=3014(flag14),1001(flag)
 </code></pre>
-> Donc 3014
+> So 3014
 
-On va donc créer un fichier .gdb contenant les instructions suivantes, avec des instructions pour bypass **ptrace** :
-<pre>file /bin/getflag	# Prendre pour base le binaire getflag
-catch syscall ptrace 	# Creation d'un catch point pour ptrace
+We will therefore create a .gdb file containing the following instructions, with instructions for bypass **ptrace** :
+<pre>file /bin/getflag	# Take as a basis the binary  getflag
+catch syscall ptrace 	# Creation of a catch point for ptrace
 commands 1
-set $eax=0		# Changement de valeur de son return
-continue		# Continue apres
+set $eax=0		# Change in the value of its return
+continue		# Continue after
 end
-break getuid		# Creer un breakpoint a get uid
-run			# Lance le debug
-step			# Avance vers le breakpoint
-print $eax		# Affiche %eax
-set $eax=3014		# Change sa valeur pour 3014
-print $eax		# Affiche %eax
-step			# Avance jusqu'a la fin du programme
+break getuid		# Create a breakpoint a get uid
+run			# Launch the debug
+step			# Advance to breakpoint
+print $eax		# Display %eax
+set $eax=3014		# Change its value for 3014
+print $eax		# Display %eax
+step			# Goes to the end of the program
 </pre>
 > <pre><code>printf "file /bin/getflag\ncatch syscall ptrace\ncommands 1\nset (\$eax) = 0\ncontinue\nend\nbreak getuid\nrun\nstep\nprint \$eax\nset \$eax=3014\nprint \$eax\nstep\n" > /tmp/file.gdb</code></pre>
 
-Il ne reste plus qu'a le lancer :
+The only thing left to do is to throw it :
 
 <pre><code>> gdb -x /tmp/file.gdb -q -batch
 Catchpoint 1 (syscall 'ptrace' [26])

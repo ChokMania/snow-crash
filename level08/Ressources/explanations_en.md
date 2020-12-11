@@ -1,11 +1,11 @@
-On trouve dans le dossier home un file token, dont nous ne pouvons lire le contenu et un binaire ./level08 qui, si on le lance nous affiche un message :
+In the home folder there is a token file, whose contents we can't read, and a binary ./level08 which, if we launch it, displays a message :
 <pre><code>> ./level08
 ./level08 [file to read]
 > ./level08 token
 You may not access 'token'
 </code></pre>
 
-On cherche à savoir ce que le binaire fait, pour cela on utilise **ltrace** :
+We want to know what the binary does, so we use **ltrace** :
 <pre><code>> ltrace ./level08 token
 __libc_start_main(0x8048554, 2, 0xbffff7d4, 0x80486b0, 0x8048720 <unfinished ...>
 strstr("token", "token")= "token"
@@ -13,21 +13,21 @@ printf("You may not access '%s'\n", "token"You may not access 'token')= 27
 exit(1 <unfinished ...>
 +++ exited (status 1) +++
 </code></pre>
-> On observe le <code>strstr("token", "token")= "token"</code> qui veut dire que nous ne pouvons pas lire le fichier quand ce dernier s'appelle "token"
+> We observe the <code>strstr("token", "token")= "token"</code> which means that we cannot read the file when it is called "token"
 
-Donc on créé un lien symbolique avec un nom different afin de contourner la vérification :
+So we create a symbolic link with a different name in order to bypass the verification
 <pre><code>> ln -s `pwd`/token /tmp/mdp
 ./level08 /tmp/mdp
 quif5eloekouj29ke0vouxean
 </code></pre>
 
-On teste le mot de passe :
+We test the password :
 <pre>
 <code>> su flag08</code>
 <code>Password: quif5eloekouj29ke0vouxean</code>
 </pre>
 
-On obtient la phrase magique **Don't forget to launch getflag !**
+You get the magic phrase **Ne pas oublier de lancer getflag !**
 
 <pre>
 <code>> getflag</code>

