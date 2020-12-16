@@ -1,4 +1,4 @@
-# Snow-Crash [(subjet)](https://cdn.intra.42.fr/pdf/pdf/13253/en.subject.pdf)
+# Snow-Crash [(subject)](https://cdn.intra.42.fr/pdf/pdf/13253/en.subject.pdf)
 
 ![Alt Text](https://media.giphy.com/media/eCqFYAVjjDksg/giphy.gif)
 
