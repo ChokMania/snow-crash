@@ -31,7 +31,7 @@ mv /tmp/getflag.sh /opt/openarenaserver/getflash.sh
 </code></pre>
 > We store in <code>/tmp/token</code> the result because **cron** takes place in background and does not display a message.
 
-We just have to make **ls** of <code>/opt/openarenaserver/</code> and wait for the file <code>/tmp/getflag.sh</code> to be deleted to know when the task has been done, so we just have to retrieve the flag :
+We just have to make **ls** of <code>/opt/openarenaserver/</code> and wait for the file <code>/opt/openarenaserver/getflash.sh</code> to be deleted to know when the task has been done, so we just have to retrieve the flag :
 <pre><code>> cat /tmp/token
 Check flag.Here is your token : viuaaale9huek52boumoomioc
 </code></pre>
